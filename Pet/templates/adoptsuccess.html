@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Application Submitted{% endblock %}
+
+{% block content %}
+
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Thank You for Your Application!</div>
+        <a href="{% url 'home' %}" class="btn btn-primary btn-xl text-uppercase">Return to Home</a>
+    </div>
+  </header>
+
+    <div class="container my-5">
+        <h2 class="text-center">Application Submitted!</h2>
+        <p class="text-center"> We will review it and get back to you shortly.</p>
+    </div>
+
+    <div class="container">
+        <div class="section-heading text-center">
+            <h2>Contact Us</h2>
+            <p>We’re here to help and would love to hear from you! Whether you have questions about our programs, need assistance, or simply want to share your thoughts, our team is ready to assist you.</p>
+        </div>
+        <div class="pages-body text-center">
+            <p class="text-muted"> 
+                <p>Email: <a href="mailto:pawsitiveconnections.contact@gmail.com" class="links">pawsitiveconnections.contact@gmail.com</a></p>
+                <p>Phone: <a href="tel:+16014023709" class="links">(601) 402-3709</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Community Resources - Pawsitive Connections{% endblock %}
+
+{% block content %}
+    <!--MastHead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Explore Our Community Resources!</div>
+            <div class="masthead-section-heading">We’ve compiled a list of resources to help you and your pets.</div>
+        </div>
+    </header>
+
+    <!--Resources-->
+    <div class="container my-5">
+        <h2 class="text-center text-uppercase">Resources by Category</h2>
+
+        <div class="row">
+            {% for category, resources in categorized_resources.items %}
+                <div class="col-md-12">
+                    <h3 class="text-uppercase">{{ category }}</h3>
+                    <ul class="list-group mb-4">
+                        {% for resource in resources %}
+                            <li class="list-group-item">
+                                <strong><a href="{{ resource.link }}" target="_blank" class="links">{{ resource.title }}</a></strong>: {{ resource.description }}<br>
+                                <strong>Address:</strong> {{ resource.address }}<br>
+                                <strong>Phone Number:</strong> {{ resource.phone_number }}<br>
+                                <strong>Email:</strong> <a href="mailto:{{ resource.email }}" class="links">{{ resource.email }}</a>
+                            </li>
+                        {% empty %}
+                            <li class="list-group-item">No resources available in this category.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% empty %}
+                <p class="text-center">No resources available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

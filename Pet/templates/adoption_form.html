@@ -1,0 +1,217 @@
+<!-- adoption_form.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Animal Adoption Application{% endblock %}
+
+{% block content %}
+
+  <!-- Masthead-->
+  <header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Apply To Adopt!</div>
+        {% comment %} <div class="masthead-heading text-uppercase"></div> {% endcomment %}
+        {% comment %} <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'adopt' %}">Find a loving companion today.</a> {% endcomment %}
+    </div>
+  </header>
+
+<div class="container my-5">
+    <h2 class="text-center">Animal Adoption Application</h2>
+    <p class="text-center">Please fill out the form below to express your interest in adopting.</p>
+    
+    <form method="POST" action="{% url 'adoption_form' %}">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="animal_species">What animal are you adopting? (Species, name)*</label>
+            <input type="text" class="form-control" id="animal_species" name="animal_species" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="adopter_name">Your name*</label>
+            <input type="text" class="form-control" id="adopter_name" name="adopter_name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Your Address*</label>
+            <input type="text" class="form-control" id="address" name="address" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="city">City*</label>
+            <input type="text" class="form-control" id="city" name="city" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="state">State*</label>
+            <input type="text" class="form-control" id="state" name="state" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="zip_code">Zip Code*</label>
+            <input type="text" class="form-control" id="zip_code" name="zip_code" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Your Email*</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone_number">Your Phone Number*</label>
+            <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone_type">Phone Type*</label>
+            <select class="form-control" id="phone_type" name="phone_type" required>
+                <option>Cell</option>
+                <option>Home</option>
+                <option>Work</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="residents">Names and ages of all permanent residents of your home (adults/children)*</label>
+            <textarea class="form-control" id="residents" name="residents" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="current_pets">Please list any pets currently living in your home, and if they are vaccinated and altered.*</label>
+            <textarea class="form-control" id="current_pets" name="current_pets" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="vet_reference">Vet reference (please call your vet and give notice that we will call.)*</label>
+            <textarea class="form-control" id="vet_reference" name="vet_reference" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="moving_soon">Are you planning to move in the near future?*</label>
+            <select class="form-control" id="moving_soon" name="moving_soon" required>
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="moving_city_state">If moving soon, to what city/state?</label>
+            <input type="text" class="form-control" id="moving_city_state" name="moving_city_state">
+        </div>
+        
+        <div class="form-group">
+            <label for="ready_to_adopt">When will you be ready to adopt this animal?*</label>
+            <select class="form-control" id="ready_to_adopt" name="ready_to_adopt" required>
+                <option>Today</option>
+                <option>This weekend</option>
+                <option>Within a week</option>
+                <option>Within a month</option>
+                <option>Not ready yet, just researching</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="allergies">Is anyone in your home allergic to the animal you're planning to adopt?*</label>
+            <select class="form-control" id="allergies" name="allergies" required>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Unsure</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="breed_familiarity">Do you have experience with the breed you're planning to adopt?*</label>
+            <select class="form-control" id="breed_familiarity" name="breed_familiarity" required>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="housing_type">What type of housing do you have?*</label>
+            <select class="form-control" id="housing_type" name="housing_type" required>
+                <option>Apartment</option>
+                <option>House</option>
+                <option>Condo</option>
+                <option>Mobile Home</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="property_ownership">Do you own or rent your home?*</label>
+            <select class="form-control" id="property_ownership" name="property_ownership" required>
+                <option>Own</option>
+                <option>Rent</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="yard_details">Do you have a fenced yard? If so, please describe.*</label>
+            <input type="text" class="form-control" id="yard_details" name="yard_details" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="household_discussion">Have you discussed the decision to adopt with all household members?*</label>
+            <select class="form-control" id="household_discussion" name="household_discussion" required>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="children_interaction">If you have children, have they interacted with animals before?*</label>
+            <select class="form-control" id="children_interaction" name="children_interaction" required>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="vet_bill_payment_plan">Please explain how you will pay your vet bills for this animal. (i.e. pet insurance, savings, etc.)*</label>
+            <textarea class="form-control" id="vet_bill_payment_plan" name="vet_bill_payment_plan" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="additional_reference">Do you have another reference we can contact? (Your pet sitter, doggie daycare contact, etc.)</label>
+            <textarea class="form-control" id="additional_reference" name="additional_reference"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea class="form-control" id="comments" name="comments"></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="rehoming_fee">Rehoming Fee*</label>
+            <input type="number" step="0.01" class="form-control" id="rehoming_fee" name="rehoming_fee" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="payment_method">Preferred Payment Method*</label>
+            <select class="form-control" id="payment_method" name="payment_method" required>
+                <option>Cash</option>
+                <option>Credit Card</option>
+                <option>Check</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="terms_agreement">Do you agree to the terms and conditions?*</label>
+            <input type="checkbox" id="terms_agreement" name="terms_agreement" required>
+            <label for="terms_agreement">I agree</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="adopter_signature">Adopter Signature*</label>
+            <input type="text" class="form-control" id="adopter_signature" name="adopter_signature" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="signature_date">Signature Date*</label>
+            <input type="date" class="form-control" id="signature_date" name="signature_date" required>
+        </div>
+        
+       <a href="{% url 'adoption_success' %}" class="btn btn-primary form-btn">Submit Application</a>
+    </form>
+</div>
+{% endblock %}

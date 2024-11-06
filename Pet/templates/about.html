@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us - Pawsitive Connections{% endblock %}
+
+{% block content %}
+
+
+
+
+
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">About Us</div>
+            <div class="masthead-section-heading"><p>
+                At <strong>Pawsitive Connections</strong>, we are dedicated to making a difference in the lives of pets and their families. Founded with the belief that every animal deserves a loving home, our mission is to connect pets in need with caring individuals who are ready to provide them with a forever home.
+            </p></div>
+        </div>
+    </header>
+
+    <!--Contact Infomation-->
+    <section class="contact-info">
+        <div class="container section-heading text-center">
+            <strong>
+            <p>Our team is passionate about animal welfare and committed to providing resources, support, and education to our community. From facilitating adoptions to offering guidance on pet care, we strive to make a positive impact every day.</p>
+            <p>We believe in the power of community and collaboration. Our organization thrives thanks to the support of volunteers, donors, and partners who share our vision of a world where every pet is cherished and well cared for.</p>
+            <p>Whether you're looking to adopt, get involved, or simply learn more about our initiatives, we invite you to explore our website and join us in our mission. Together, we can create a more compassionate world for pets and the people who love them.</p>
+            </strong>
+            <h2><strong>Our Values:</strong></h2>
+            <ul>
+                <li><strong>Compassion:</strong> We care deeply about every animal and are dedicated to improving their lives.</li>
+                <li><strong>Integrity:</strong> We operate with transparency and honesty in all our endeavors.</li>
+                <li><strong>Community:</strong> We believe in the strength of working together to achieve our goals.</li>
+            </ul>
+            <p>Thank you for visiting <strong>Pawsitive Connections</strong>. We look forward to partnering with you to make a difference!</p>
+        </div>
+
+        <div class="container">
+            <img class="rounded-circle img-fluid imgabout" src="{% static 'images/snowycat.jpg' %}" alt="...">
+        </div>
+
+        <div class="container">
+            <div class="section-heading text-center">
+                <h2>Contact Us</h2>
+                <p>We’re here to help and would love to hear from you! Whether you have questions about our programs, need assistance, or simply want to share your thoughts, our team is ready to assist you.</p>
+            </div>
+            <div class="pages-body text-center">
+                <p class="text-muted"> 
+                    <p>Email: <a href="mailto:pawsitiveconnections.contact@gmail.com" class="links">pawsitiveconnections.contact@gmail.com</a></p>
+                    <p>Phone: <a href="tel:+16014023709" class="links">(601) 402-3709</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="about" class="py-5">
+        {% comment %} <div class="container"> {% endcomment %}
+            <h2 class="text-center">Submit Your Request</h2>
+            <p class="text-center">We would love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="form-container">
+                    
+                        <!-- Form starts here -->
+                        <form method="POST" action="{% url 'about_form' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_name" class="form-label2">Your Name</label>
+                                <input type="text" name="name" class="form-control" id="id_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_email" class="form-label2">Your Email</label>
+                                <input type="email" name="email" class="form-control" id="id_email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_phone" class="form-label2">Phone Number</label>
+                                <input type="tel" name="phone" class="form-control" id="id_phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_request" class="form-label2">Your Request</label>
+                                <textarea name="request" class="form-control" id="id_request" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class=" form-btn">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+{% endblock %}

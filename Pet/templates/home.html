@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Pawsitive Connections{% endblock %}
+
+{% block content %}
+  <!-- Masthead-->
+  <header class="masthead">
+      <div class="container">
+          <div class="masthead-subheading">Welcome To Pawsitive Connections Adoption Center!</div>
+          <div class="masthead-heading text-uppercase">Uniting Hearts, One Paw at a Time</div>
+          <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'adopt' %}">Find a loving companion today.</a>
+      </div>
+  </header>
+
+  <!-- Services Section -->
+  <section class="page-section" id="services">
+      <div class="container">
+          <div class="text-center">
+              <h2 class="section-heading text-uppercase">Pages</h2>
+              <h3 class="section-subheading text-muted">See what we have in store</h3>
+          </div>
+          <div class="row text-center">
+              <div class="col-md-4">
+                  <a href="{% url 'success' %}">
+                      <span class="fa-stack fa-large" > 
+                          <i class="fas fa-circle fa-stack-2x iconcol"></i>
+                          <i class="fas fa-book fa-stack-1x fa-inverse " ></i>
+                      </span>
+                  </a>
+                  <h4 class="my-3">Success Stories</h4>
+                  <p class="text-muted">Read heartwarming stories of pets who have found their forever homes through our adoption center.</p>
+              </div>
+              <div class="col-md-4">
+                  <a href="{% url 'resources' %}">
+                      <span class="fa-stack fa-large">
+                          <i class="fas fa-circle fa-stack-2x iconcol"></i>
+                          <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+                  <h4 class="my-3">Community Resources</h4>
+                  <p class="text-muted">Find resources for pet owners and the community.</p>
+              </div>
+              <div class="col-md-4">
+                  <a href="{% url 'involved' %}">
+                      <span class="fa-stack fa-large">
+                          <i class="fas fa-circle fa-stack-2x iconcol"></i>
+                          <i class="fas fa-mouse fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+                  <h4 class="my-3">Get Involved</h4>
+                  <p class="text-muted">Join us in helping animals by volunteering or donating.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+   <!-- About -->
+   <section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">Our mission is to help our clients find their "purrfect" match in a pet.</h3>
+        </div>
+        <ul class="pages">
+            <li>
+                <div class="pages-image">
+                    <img class="rounded-circle img-fluid homeimg" src="{% static 'images/pupingrass.jpg' %}" alt="...">
+                </div>
+                <div class="pages-panel">
+                    <div class="pages-heading">
+                        <h4>Adopt a Pet</h4>
+                    </div>
+                    <div class="pages-body">                    
+                        <p class="text-muted">Browse through our available pets and find the perfect match for your family. Each pet has been vaccinated, microchipped, and is ready to go home with you today.</p> 
+                    </div>
+                </div>
+            </li>
+            <li class="pages-inverted">
+                <div class="pages-image">
+                    <img class="rounded-circle img-fluid homeimg" src="{% static 'images/blackcat.jpg' %}" alt="...">
+                </div>
+                <div class="pages-panel">
+                    <div class="pages-heading">
+                        <h4>Steps to find a pet</h4>
+                    </div>
+                    <div class="pages-body">      
+                        <ol class="steps text-muted">
+                            <li>Fill out our personalization form.</li>
+                            <li>Include information such as price, age, sex, and breed.</li>
+                            <li>Search through the options shown from filter.</li>
+                            <li>Fill out an adoption application.</li>
+                            <li>Meet your best friend!</li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="pages-image">
+                    <img class="rounded-circle img-fluid homeimg" src="{% static 'images/whitechi.jpg' %}" alt="...">
+                </div>
+                <div class="pages-panel">
+                    <div class="pages-heading">
+                        <h4 >Contact Us</h4>
+                        <p class="text-muted">If you have any questions or would like to know more about the adoption process, feel free to reach out to us. We are here to help you every step of the way.</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+        <div class="homecon">
+            <p>Email: <a href="mailto:pawsitiveconnections.contact@gmail.com" class="links">pawsitiveconnections.contact@gmail.com</a></p>
+            <p>Phone: <a href="tel:+16014023709" class="links">(601) 402-3709</a>
+            </div>
+   </section>
+        
+    <!-- Team -->
+    <section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+                <h3 class="section-subheading text-muted">This is the team that makes everything we do possible.</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="{% static 'images/teamcar.PNG' %}" alt="...">
+                        <h4>Carleigh Smith</h4>
+                        <p class="text-muted">Lead Designer and Developer</p>
+                        <a class="btn btn-dark btn-social mx-2" href="https://x.com/?logout=1730847217720" aria-label="Carleigh Smith Twitter Profile"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/p/carleigh-smith-61565349583237/?sk=about_life_events" aria-label="Carleigh Smith Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="www.linkedin.com/in/carleigh-smith-a80383300" aria-label="Carleigh Smith LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="{% static 'images/teamsue.PNG' %}" alt="...">
+                        <h4>Suzanne Parker</h4>
+                        <p class="text-muted">Lead Writer</p>
+                        <a class="btn btn-dark btn-social mx-2" href="https://x.com/?logout=1730847217720" aria-label="Suzanne Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/p/carleigh-smith-61565349583237/?sk=about_life_events" aria-label="Suzanne Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/home" aria-label="Suzanne Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="{% static 'images/teambrittany.jpg' %}" alt="..." >
+                        <h4>Brittany Williams</h4>
+                        <p class="text-muted">Lead Financial Advisor</p>
+                        <a class="btn btn-dark btn-social mx-2" href="https://x.com/?logout=1730847217720" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/p/carleigh-smith-61565349583237/?sk=about_life_events" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/home" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Together, we're dedicated to finding loving homes for every animal and making a positive impact in our community.</p></div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Contact Form Section -->
+   <section id="contact" class="py-5">
+    <div class="container">
+        <h2 class="text-center form-label">Contact Us</h2>
+        <p class="text-center form-label">We would love to hear from you! Please fill out the form below and we'll get back to you as soon as possible.</p>
+        <div class="row justify-content-center form-label" >
+            <div class="col-md-8">
+                <form method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_name" class="form-label">Your Name</label>
+                        <input type="text" name="name" class="form-control" id="id_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email" class="form-label">Your Email</label>
+                        <input type="email" name="email" class="form-control" id="id_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_message" class="form-label">Your Message</label>
+                        <textarea name="message" class="form-control" id="id_message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-btn">Send Message</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+    
+{% endblock %}

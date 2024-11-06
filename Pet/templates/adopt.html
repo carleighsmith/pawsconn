@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Adopt - Pawsitive Connections{% endblock %}
+
+{% block content %}
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Meet our available Pets!</div>
+        <div class="masthead-section-heading">Meet our adorable pets who are looking for their forever homes! Click on each pet's photo to learn more about their personality and how you can adopt them.</div>
+        <div class="masthead-heading text-uppercase">Interested In Adopting, Click Here!</div>
+        <!-- Interested In Adopting, Fill Out this Form-->
+        <div class="text-center my-4">
+            <a href="{% url 'adoption_form' %}" class="btn btn-primary btn-xl text-uppercase">Adopt a Pet</a>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Adoption Gallery --> 
+<section class="page-section bg-light" id="gallery">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Our Available Pets</h2>
+        </div>
+
+        <div>
+            <div class="filter-container">
+                <h3>Filter Pets</h3>
+                <label for="speciesFilter">Species: </label>
+                <select id="speciesFilter">
+                    <option value="All">All</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Other">Other</option>
+                </select>
+            
+                <label for="genderFilter">Gender: </label>
+                <select id="genderFilter">
+                    <option value="All">All</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            
+                <label for="maxPriceFilter">Max Price: </label>
+                <input type="number" id="maxPriceFilter" placeholder="Enter max price">
+            
+                <button onclick="filterPets()">Apply Filter</button>
+            </div>
+        </div>
+
+        <!-- CREATE AN ADOPTION FORM-->
+        
+        <div class="row" id="pet-gallery">
+            {% for pet in pets %}
+            <div class="col-lg-4 col-sm-6 mb-4 pet-card" data-species="{{ pet.species }}" data-gender="{{ pet.gender }}" data-price="{{ pet.price }}">
+                <!-- Pet Items -->
+                <div class="gallery-item">
+                    <a class="gallery-link" data-bs-toggle="modal" href="#galleryModal{{ forloop.counter }}">
+                        <div class="gallery-hover">
+                            <div class="gallery-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>  
+                        <img class="img-fluid" src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                    </a>
+                    <div class="gallery-caption">
+                        <div class="gallery-caption-heading">{{ pet.name }}</div>
+                        <div class="gallery-caption-subheading text-muted">{{ pet.age }} Years Old</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Gallery Modals -->
+{% for pet in pets %}
+<!-- Gallery modal popup for each pet -->
+<div class="gallery-modal modal fade" id="galleryModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="modal-body">
+                            <!-- Project details -->
+                            <h2 class="text-uppercase">{{ pet.name }}</h2>
+                            <img class="img-fluid d-block mx-auto" src="{{ pet.image.url }}" alt="{{ pet.name }}">
+                            <p>{{ pet.description }}</p>
+                            <ul class="list-inline">
+                                <li><strong>Age:</strong> {{ pet.age }} Years Old</li>
+                                <li><strong>Species:</strong> {{ pet.species }}</li>
+                                <li><strong>Breed:</strong> {{ pet.breed }}</li>
+                                <li><strong>Gender:</strong> {{ pet.gender }}</li>
+                                <li><strong>Color:</strong> {{ pet.color }}</li>
+                                <li><strong>Size:</strong> {{ pet.size }}</li>
+                                <li><strong>Price:</strong> ${{ pet.price }}</li>
+                            </ul>
+                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                <i class="fas fa-xmark me-1"></i>
+                                Close Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+<!-- JS for Pet Filtering -->
+<script>
+    function filterPets() {
+        const speciesFilter = document.getElementById('speciesFilter').value;
+        const genderFilter = document.getElementById('genderFilter').value;
+        const maxPriceFilter = document.getElementById('maxPriceFilter').value;
+
+        // Get all pet cards
+        const petCards = document.querySelectorAll('.pet-card');
+
+        petCards.forEach(card => {
+            // Extract the pet's species, gender, and price from data attributes
+            const petSpecies = card.getAttribute('data-species');
+            const petGender = card.getAttribute('data-gender');
+            const petPrice = parseInt(card.getAttribute('data-price'));
+
+            let showCard = true;
+
+            // Apply species filter
+            if (speciesFilter !== 'All' && speciesFilter !== petSpecies) {
+                showCard = false;
+            }
+
+            // Apply gender filter
+            if (genderFilter !== 'All' && genderFilter !== petGender) {
+                showCard = false;
+            }
+
+            // Apply price filter
+            if (maxPriceFilter && petPrice > maxPriceFilter) {
+                showCard = false;
+            }
+
+            // Show or hide the card based on filter results
+            if (showCard) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+{% endblock %}

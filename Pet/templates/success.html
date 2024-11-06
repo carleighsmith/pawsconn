@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Success Stories - Pawsitive Connections{% endblock %}
+
+{% block content %}
+
+<style>
+    .success-story-card {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    .success-story-card .card-img-container {
+        height: 400px; /* Adjust this value as needed */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 10px; /* Add padding to create space */
+    }
+    .success-story-card .card-img-top {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    .success-story-card .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .success-story-card .card-text {
+        overflow: hidden;
+        position: relative;
+    }
+    .success-story-card .card-text.collapsed {
+        max-height: 100px; /* Adjust as needed */
+    }
+    .success-story-card .card-text.expanded {
+        max-height: none;
+    }
+    .read-more-btn {
+        align-self: flex-start;
+        margin-top: auto;
+        cursor: pointer;
+        color: orange;
+    }
+</style>
+
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container">
+        <div class="masthead-subheading">Read about our success stories!</div>
+        <div class="masthead-section-heading">We are thrilled to share the happy endings of our adopted pets and their new families.</div>
+    </div>
+</header>
+
+<section class="page-section">
+    <!--Success Stories-->
+    <div class="container my-5">
+        <h2 class="text-center text-uppercase mb-5">Adoption Success Stories</h2>
+    
+        <div class="row">
+            {% for story in success_stories %}
+            <div class="col-md-4 mb-4">
+                <div class="card success-story-card">
+                    <div class="card-img-container">
+                        <img class="card-img-top" src="{{ story.image.url }}" alt="Adopted Pet">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ story.title }}</h5>
+                        <div class="card-text collapsed">{{ story.story }}</div>
+                        <span class="read-more-btn">Read More</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No success stories available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const readMoreBtns = document.querySelectorAll('.read-more-btn');
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const cardText = this.previousElementSibling;
+            if (cardText.classList.contains('collapsed')) {
+                cardText.classList.remove('collapsed');
+                cardText.classList.add('expanded');
+                this.textContent = 'Read Less';
+            } else {
+                cardText.classList.remove('expanded');
+                cardText.classList.add('collapsed');
+                this.textContent = 'Read More';
+            }
+        });
+    });
+});
+</script>
+
+{% endblock %}

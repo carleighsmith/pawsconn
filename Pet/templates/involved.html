@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Get Involved - Pawsitive Connections{% endblock %}
+
+{% block content %}
+    <!-- Masthead-->
+    <header class="masthead">
+        <div class="container">
+            <div class="masthead-subheading">Want to get involved?</div>
+            <div class="masthead-section-heading">Every effort counts, and together we can create a more compassionate community for pets and their families. If you’re interested in getting involved or have any questions, please don’t hesitate to reach out to us!</div>
+        </div>
+    </header>
+
+    <!-- Get Involved Section -->
+    <section class="get-involved py-5">
+        <div class="container">
+            <h2 class="text-center">Ways to Get Involved</h2>
+            <p class="text-center">There are many ways you can contribute to our mission. Your involvement helps us continue our work and make a positive impact on the lives of pets and their families. Here’s how you can get involved:</p>
+            <div class="row">
+                {% for opportunity in involvement_opportunities %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card involvement-card">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ opportunity.title }}</h4>
+                                <p class="card-text">{{ opportunity.description }}</p>
+                                <a class="btn btn-primary" href="{{ opportunity.link }}">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="col-12">
+                        <p class="text-center">No involvement opportunities available at the moment.</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <p>If you have any questions or would like more information on how to get involved, please <a href="{%url 'about'%}"  class="links">contact us</a>. We look forward to working with you!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section class="resources py-5">
+        <div class="container">
+            <h2 class="text-center">Additional Resources</h2>
+            <p class="text-center">Here are some organizations and resources you can explore to further support our mission:</p>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="https://www.southernpinesanimalshelter.org" target="_blank" class="links">Southern Pines Animal Shelter</a> - Local shelter dedicated to animal rescue and adoption.</li>
+                <li class="list-group-item"><a href="https://www.humanesocietysms.org" target="_blank" class="links">Humane Society of South Mississippi</a> - Provides education, advocacy, and resources for pet care.</li>
+                <li class="list-group-item"><a href="https://www.adoptapet.com" target="_blank" class="links">Adopt-a-Pet</a> - A national database of pets in need of homes.</li>
+                <li class="list-group-item"><a href="https://www.aspca.org" target="_blank" class="links">ASPCA</a> - Offers comprehensive resources on pet care, adoption, and advocacy.</li>
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}
