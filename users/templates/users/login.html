@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Pawsitive Connections{% endblock %}
+
+{% block content %}
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'users/css/styles.css' %}">
+    </head>
+
+  <!-- Masthead-->
+  <header class="masthead">
+      <div class="container">
+          <div class="masthead-subheading">Time to Log on In!</div>
+          <div class="masthead-section-heading text-uppercase">Dont have an account?</div>
+          <a class="btn btn-primary text-uppercase" href="{% url 'register' %}">Sign Up!</a>
+      </div>
+  </header>
+
+  <div class="usersform-container">
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <h2 class='usersform-h2'>Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" class="usersform" placeholder="Username" required>
+        <input type="password" name="password" class="usersform" placeholder="Password" required>
+        <button type="submit" class="usersform-button">Login</button>
+    </form>
+    <a href="{% url 'register' %}" class="usersform-link">Don't have an account? Sign up here</a>
+    </div>
+{% endblock %}

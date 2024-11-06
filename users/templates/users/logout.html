@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Pawsitive Connections{% endblock %}
+
+{% block content %}
+  <!-- Masthead-->
+  <header class="masthead">
+      <div class="container">
+          <div class="masthead-subheading">Ready to Log Out?</div>
+      </div>
+  </header>
+
+
+  <div class="usersform-container">
+    <h2 class='usersform-h2'>Log Out</h2>
+    <p class='usersform-h2'>Are you sure you want to log out?</p>
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="usersform-button">Yes, Log Me Out</button>
+    </form>
+    <a href="{% url 'home' %}" class="usersform-link">Cancel</a>
+</div>
+{% endblock %}
